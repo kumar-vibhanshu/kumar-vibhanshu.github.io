@@ -3,203 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kumar Vibhanshu | Technical Lead & Cloud Architect</title>
+    <title>Kumar Vibhanshu | Technical Lead</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         :root {
             --primary: #6366f1;
-            --secondary: #a855f7;
-            --bg: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --text-main: #f8fafc;
+            --bg: #0b0f1a;
+            --card-bg: #161b2a;
+            --text: #f8fafc;
             --text-muted: #94a3b8;
+            --aws: #FF9900;
+            --azure: #0089D6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        header { padding: 6rem 0 3rem; text-align: center; }
+        h1 { font-size: 3.5rem; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        section { padding: 4rem 0; }
+        h2 { font-size: 2rem; border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 2rem; }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+        /* Experience Styles */
+        .exp-card { background: var(--card-bg); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.05); }
+        .exp-header { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1rem; }
+        .role { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+        .date { color: var(--text-muted); font-size: 0.9rem; }
+        ul { list-style: none; }
+        li::before { content: "▹"; color: var(--primary); margin-right: 10px; }
 
-        /* Navigation */
-        nav {
-            padding: 1.5rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-        }
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
+        /* Cert Grid */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .cert-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: 0.3s; }
+        .cert-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .btn { display: block; text-align: center; background: rgba(99, 102, 241, 0.1); color: var(--primary); text-decoration: none; padding: 10px; border-radius: 8px; margin-top: 15px; font-weight: 600; font-size: 0.9rem; transition: 0.2s; border: 1px solid var(--primary); }
+        .btn:hover { background: var(--primary); color: white; }
 
-        /* Hero Section */
-        header { padding: 6rem 0 4rem; text-align: center; }
-        h1 { font-size: 3.5rem; margin-bottom: 1rem; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; }
-        .social-links a { color: var(--text-main); font-size: 1.5rem; margin: 0 10px; transition: 0.3s; }
-        .social-links a:hover { color: var(--primary); transform: translateY(-3px); }
-
-        /* Sections */
-        section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        h2 { font-size: 1.8rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 10px; }
-        h2::after { content: ""; height: 1px; flex: 1; background: rgba(255,255,255,0.1); }
-
-        /* Grid Layouts */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .card { 
-            background: var(--card-bg); 
-            padding: 1.5rem; 
-            border-radius: 12px; 
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-        }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-
-        /* Skill Badges */
-        .skills-tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: rgba(99, 102, 241, 0.1); color: #818cf8; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(99, 102, 241, 0.2); }
-
-        /* Experience Timeline */
-        .exp-item { margin-bottom: 2.5rem; position: relative; padding-left: 20px; border-left: 2px solid var(--primary); }
-        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
-        .company { color: var(--primary); font-weight: 600; }
-        .date { font-size: 0.85rem; color: var(--text-muted); }
-        .exp-content ul { list-style: none; margin-top: 10px; }
-        .exp-content li { margin-bottom: 8px; color: var(--text-muted); font-size: 0.95rem; }
-        .exp-content li::before { content: "▹"; color: var(--primary); margin-right: 8px; }
-
-        /* Certs */
-        .cert-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .cert-item { font-size: 0.9rem; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 6px; }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .cert-list { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-        }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <nav>
-        <div class="logo">KV.DEV</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#certifications">Certifications</a>
-        </div>
-    </nav>
-
     <header>
         <h1>Kumar Vibhanshu</h1>
-        <p class="subtitle">Technical Lead | Cloud Architect | AI Engineer</p>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/kumar-vibhanshu"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/kumar-vibhanshu"><i class="fab fa-github"></i></a>
-            <a href="mailto:kmrvibhanshu@gmail.com"><i class="fas fa-envelope"></i></a>
+        <p style="font-size: 1.2rem; color: var(--text-muted);">Technical Lead | AWS & Azure Architect | AI Engineer</p>
+        <div style="margin-top: 2rem;">
+            <a href="https://linkedin.com/in/kumar-vibhanshu" style="color: white; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/kumar-vibhanshu" style="color: white; margin: 0 15px; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
         </div>
     </header>
 
-    <section id="about">
-        <h2>Professional Summary</h2>
-        <p style="color: var(--text-muted); max-width: 800px;">
-            Technical Lead with 5+ years of experience architecting enterprise-grade cloud and AI solutions at Tata Consultancy Services. 
-            Proven expertise in multi-cloud architectures (AWS, Azure), AI implementation using Azure OpenAI, and delivering scalable 
-            microservices for millions of users.
-        </p>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Expertise</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Cloud & AI</h3>
-                <div class="skills-tag-container" style="margin-top: 15px;">
-                    <span class="tag">AWS</span> <span class="tag">Azure</span> <span class="tag">Multi-cloud</span>
-                    <span class="tag">Azure OpenAI</span> <span class="tag">Generative AI</span> <span class="tag">MLOps</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Development</h3>
-                <div class="skills-tag-container" style="margin-top: 15px;">
-                    <span class="tag">Java</span> <span class="tag">Spring Boot</span> <span class="tag">Microservices</span>
-                    <span class="tag">REST APIs</span> <span class="tag">SQL/NoSQL</span> <span class="tag">PHP</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>DevOps & Tools</h3>
-                <div class="skills-tag-container" style="margin-top: 15px;">
-                    <span class="tag">Docker</span> <span class="tag">Kubernetes</span> <span class="tag">GitHub Actions</span>
-                    <span class="tag">CI/CD</span> <span class="tag">IaC</span> <span class="tag">Agile</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
+    <section>
         <h2>Professional Experience</h2>
-        
-        <div class="exp-item">
+        <div class="exp-card">
             <div class="exp-header">
                 <div>
-                    <h3>Technical Lead</h3>
-                    <div class="company">Tata Consultancy Services</div>
+                    [span_2](start_span)<div class="role">Technical Lead[span_2](end_span)</div>
+                    [span_3](start_span)<div style="font-weight: 500;">Tata Consultancy Services[span_3](end_span)</div>
                 </div>
-                <div class="date">Feb 2025 - Present</div>
+                [span_4](start_span)<div class="date">Feb 2025 – Present[span_4](end_span)</div>
             </div>
-            <div class="exp-content">
-                <ul>
-                    <li>Lead technical teams in designing enterprise-grade cloud and AI solutions for high-profile clients.</li>
-                    <li>Architect multi-cloud solutions (AWS/Azure) serving millions of users with high availability.</li>
-                    <li>Automate CI/CD pipelines using GitHub Actions, reducing deployment time by 40%.</li>
-                </ul>
-            </div>
+            <ul>
+                [span_5](start_span)<li>Leading technical teams in designing enterprise-grade cloud and AI solutions[span_5](end_span).</li>
+                [span_6](start_span)<li>Architecting multi-cloud solutions on AWS and Azure for millions of users[span_6](end_span).</li>
+                [span_7](start_span)<li>Automating CI/CD pipelines via GitHub Actions, reducing deployment time by 40%[span_7](end_span).</li>
+            </ul>
         </div>
 
-        <div class="exp-item">
+        <div class="exp-card">
             <div class="exp-header">
                 <div>
-                    <h3>System Engineer Developer</h3>
-                    <div class="company">Tata Consultancy Services</div>
+                    [span_8](start_span)<div class="role">System Engineer Developer[span_8](end_span)</div>
+                    [span_9](start_span)<div style="font-weight: 500;">Tata Consultancy Services[span_9](end_span)</div>
                 </div>
-                <div class="date">May 2021 - Feb 2025</div>
+                [span_10](start_span)<div class="date">May 2021 – Feb 2025[span_10](end_span)</div>
             </div>
-            <div class="exp-content">
-                <ul>
-                    <li>Developed and deployed scalable microservices architectures with RESTful API integrations.</li>
-                    <li>Focused on performance, security, and cost optimization for cloud-native applications.</li>
-                    <li>Implemented Infrastructure as Code (IaC) for automated configuration management.</li>
-                </ul>
-            </div>
+            <ul>
+                [span_11](start_span)<li>Developed scalable microservices with RESTful API integrations[span_11](end_span).</li>
+                [span_12](start_span)<li>Built cloud-native applications focused on performance and cost optimization[span_12](end_span).</li>
+                [span_13](start_span)<li>Implemented Infrastructure as Code for automated provisioning[span_13](end_span).</li>
+            </ul>
         </div>
     </section>
 
     <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="cert-list">
-            <div class="cert-item"><i class="fas fa-certificate" style="color: gold;"></i> AWS Solutions Architect Associate</div>
-            <div class="cert-item"><i class="fas fa-certificate" style="color: #00a4ef;"></i> Azure AI Engineer Associate</div>
-            <div class="cert-item"><i class="fas fa-certificate" style="color: gold;"></i> AWS AI Practitioner</div>
-            <div class="cert-item"><i class="fas fa-certificate" style="color: #00a4ef;"></i> Azure Fundamentals (AZ-900)</div>
-            <div class="cert-item"><i class="fas fa-certificate" style="color: #4285f4;"></i> Google Cloud Compute Basics</div>
-            <div class="cert-item"><i class="fas fa-certificate" style="color: #818cf8;"></i> Rest API (Intermediate) Skills</div>
+        <h2>Verified Certifications</h2>
+        <div class="cert-grid">
+            
+            <div class="cert-card">
+                <i class="fab fa-aws" style="color: var(--aws); font-size: 2rem;"></i>
+                <h3 style="margin: 10px 0;">AWS Solutions Architect</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Associate (SAA-C03)</p>
+                <a href="https://www.credly.com/badges/65300044-064c-4e3c-812e-85b94b438522/" target="_blank" class="btn">Verify on Credly <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 2rem;"></i>
+                <h3 style="margin: 10px 0;">Azure AI Engineer</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Associate (AI-102)</p>
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/kumar-vibhanshu/DB29156F846C6D62" target="_blank" class="btn">Verify on Microsoft <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-aws" style="color: var(--aws); font-size: 2rem;"></i>
+                <h3 style="margin: 10px 0;">AWS AI Practitioner</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Foundational (AIF-C01)</p>
+                <a href="https://www.credly.com/badges/65300044-064c-4e3c-812e-85b94b438522/" target="_blank" class="btn">Verify on Credly <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 2rem;"></i>
+                <h3 style="margin: 10px 0;">Azure Fundamentals</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">AZ-900</p>
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/kumar-vibhanshu/DB29156F846C6D62" target="_blank" class="btn">Verify on Microsoft <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
         </div>
     </section>
 
-    <footer style="padding: 4rem 0; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-        <p>&copy; 2026 Kumar Vibhanshu. Built with Cloud-Native Focus.</p>
+    <section>
+        <h2>Education</h2>
+        <div class="exp-card">
+            [span_14](start_span)<strong>Master of Computer Applications (MCA)[span_14](end_span)</strong><br>
+            [span_15](start_span)TIT Technocrats Group of Institutions, Bhopal (2018-2020)[span_15](end_span)
+        </div>
+        <div class="exp-card">
+            [span_16](start_span)<strong>Bachelor of Computer Applications (BCA)[span_16](end_span)</strong><br>
+            T.N.B. [span_17](start_span)College, Bhagalpur (2014-2017)[span_17](end_span)
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
+        &copy; 2026 Kumar Vibhanshu | Cloud & AI Technical Lead
     </footer>
 </div>
 
