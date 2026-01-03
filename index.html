@@ -20,6 +20,7 @@
             --text-muted: #94a3b8;
             --aws: #FF9900;
             --azure: #0089D6;
+            --google: #4285F4;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,9 +69,9 @@
         .exp-list li::before { content: "▹"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .cert-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; transition: 0.3s; }
+        .cert-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
         .cert-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .cert-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-top: 5px; background: rgba(255,255,255,0.1); }
+        .cert-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-top: 5px; background: rgba(255,255,255,0.1); align-self: flex-start; }
         
         .verify-btn { display: block; text-align: center; background: rgba(99, 102, 241, 0.1); color: var(--primary); text-decoration: none; padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--primary); transition: 0.3s; }
         .verify-btn:hover { background: var(--primary); color: white; }
@@ -202,13 +203,6 @@
         <h2>Professional Certifications</h2>
         <div class="cert-grid">
             <div class="cert-card">
-                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 1.8rem;"></i>
-                <h4 style="margin: 12px 0;">Azure AI Engineer Associate</h4>
-                <div class="cert-badge">CODE: AI-102</div>
-                <a href="https://learn.microsoft.com/api/credentials/share/en-us/kumar-vibhanshu/DB29156F846C6D62" target="_blank" class="verify-btn">Verify Credential</a>
-            </div>
-
-            <div class="cert-card">
                 <i class="fab fa-aws" style="color: var(--aws); font-size: 1.8rem;"></i>
                 <h4 style="margin: 12px 0;">AWS Solutions Architect Associate</h4>
                 <div class="cert-badge">CODE: SAA-C03</div>
@@ -220,6 +214,43 @@
                 <h4 style="margin: 12px 0;">AWS Certified AI Practitioner</h4>
                 <div class="cert-badge">CODE: AIF-C01</div>
                 <a href="https://www.credly.com/badges/65300044-064c-4e3c-812e-85b94b438522/" target="_blank" class="verify-btn">Verify Credential</a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-aws" style="color: var(--aws); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">AWS Cloud Practitioner</h4>
+                <div class="cert-badge">CODE: CLF-C02</div>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">Azure AI Engineer Associate</h4>
+                <div class="cert-badge">CODE: AI-102</div>
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/kumar-vibhanshu/DB29156F846C6D62" target="_blank" class="verify-btn">Verify Credential</a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">Azure Fundamentals</h4>
+                <div class="cert-badge">CODE: AZ-900</div>
+            </header>
+
+            <div class="cert-card">
+                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">Azure AI Fundamentals</h4>
+                <div class="cert-badge">CODE: AI-900</div>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-google" style="color: var(--google); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">Google Cloud Compute Basics</h4>
+                <div class="cert-badge">GCP</div>
+            </div>
+
+            <div class="cert-card">
+                <i class="fas fa-plug" style="color: var(--primary); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">Rest API (Intermediate)</h4>
+                <div class="cert-badge">Skills Certification</div>
             </div>
         </div>
     </section>
