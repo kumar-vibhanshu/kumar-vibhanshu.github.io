@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kumar Vibhanshu | Technical Lead & Cloud Architect</title>
     <meta name="copyright" content="© 2026 Kumar Vibhanshu. All Rights Reserved.">
+    <meta name="author" content="Kumar Vibhanshu">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -12,10 +13,13 @@
     <style>
         :root {
             --primary: #6366f1;
+            --primary-hover: #4f46e5;
             --bg: #0b0f1a;
             --card-bg: #161b2a;
             --text: #f8fafc;
             --text-muted: #94a3b8;
+            --aws: #FF9900;
+            --azure: #0089D6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,8 +27,10 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
         
         header { padding: 6rem 0 3rem; text-align: center; }
-        h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
+        h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.95rem; margin-top: 1rem; }
+        .contact-info a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
         .btn-download {
             display: inline-flex;
             align-items: center;
@@ -37,18 +43,45 @@
             font-weight: 700;
             margin-top: 2rem;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
+        .btn-download:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
         section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        h2 { font-size: 1.8rem; border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 2rem; }
+        h2 { font-size: 1.8rem; border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 2rem; color: var(--text); }
+
+        .summary-box { background: rgba(99, 102, 241, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.1); }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #1e293b; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1); }
 
         .exp-card { background: var(--card-bg); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.05); }
+        .exp-header { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1rem; }
         .role { color: var(--primary); font-weight: 800; font-size: 1.3rem; }
+        .company { font-weight: 600; font-size: 1.1rem; }
+        .date-loc { color: var(--text-muted); font-size: 0.9rem; text-align: right; }
         
-        .tag { background: #1e293b; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; margin: 0 5px 10px 0; display: inline-block; border: 1px solid rgba(255,255,255,0.1); }
-        
+        .exp-list { list-style: none; margin-top: 10px; }
+        .exp-list li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem; }
+        .exp-list li::before { content: "▹"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .cert-card { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .cert-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; transition: 0.3s; }
+        .cert-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .cert-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-top: 5px; background: rgba(255,255,255,0.1); }
+        
+        .verify-btn { display: block; text-align: center; background: rgba(99, 102, 241, 0.1); color: var(--primary); text-decoration: none; padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--primary); transition: 0.3s; }
+        .verify-btn:hover { background: var(--primary); color: white; }
+
+        footer { text-align: center; padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
+        .copyright { font-size: 0.9rem; color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .date-loc { text-align: left; margin-top: 10px; width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -56,7 +89,13 @@
 <div class="container">
     <header>
         <h1>Kumar Vibhanshu</h1>
-        <p style="font-size: 1.2rem; color: var(--text-muted);">Technical Lead | Cloud Architect | AI Engineer</p>
+        <p style="font-size: 1.3rem; color: var(--text-muted); font-weight: 300;">Technical Lead | Cloud Architect | AI Engineer</p>
+        <div class="contact-info">
+            <span><i class="fas fa-phone"></i> 8809233239</span>
+            <span><i class="fas fa-envelope"></i> <a href="mailto:kmrvibhanshu@gmail.com">kmrvibhanshu@gmail.com</a></span>
+            <span><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/kumar-vibhanshu" target="_blank">LinkedIn</a></span>
+            <span><i class="fab fa-github"></i> <a href="https://github.com/kumar-vibhanshu" target="_blank">GitHub</a></span>
+        </div>
         <a href="kumar_vibhanshu_resume.pdf" download="kumar_vibhanshu_resume.pdf" class="btn-download">
             <i class="fas fa-file-pdf"></i> Download Resume (PDF)
         </a>
@@ -64,59 +103,131 @@
 
     <section id="summary">
         <h2>Professional Summary</h2>
-        [span_0](start_span)<p>Technical Lead with 5+ years of overall software engineering experience and a strong foundation in hands-on development[span_0](end_span). [span_1](start_span)Brings deep practical expertise in cloud migration, infrastructure automation, microservices architecture, and DevOps practices[span_1](end_span). [span_2](start_span)Proficient in AWS, Azure, Kubernetes, Docker, Terraform, and CI/CD pipelines, with experience designing and supporting scalable, secure, multi-cloud systems[span_2](end_span).</p>
+        <div class="summary-box">
+            <p>Technical Lead with 5+ years of overall software engineering experience and a strong foundation in hands-on development. Brings deep practical expertise in cloud migration, infrastructure automation, microservices architecture, and DevOps practices. Proficient in AWS, Azure, Kubernetes, Docker, Terraform, and CI/CD pipelines, with experience designing and supporting scalable, secure, multi-cloud systems. Proven track record of improving system reliability and delivery efficiency, including reducing deployment time by 40%.</p>
+        </div>
     </section>
 
     <section id="skills">
         <h2>Technical Skills</h2>
-        <div class="tag-cloud">
-            <span class="tag">AWS (EC2, S3, Lambda, VPC, EKS)</span>
-            <span class="tag">Microsoft Azure</span>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">Azure OpenAI Service</span>
-            <span class="tag">Microservices</span>
-            <span class="tag">RESTful APIs</span>
-            <span class="tag">CI/CD Pipelines</span>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-cloud"></i> Cloud Platforms</h3>
+                <div class="tag-cloud">
+                    <span class="tag">AWS (EC2, S3, Lambda, VPC, EKS)</span>
+                    <span class="tag">Microsoft Azure</span>
+                    <span class="tag">Multi-cloud Architecture</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-robot"></i> AI & ML</h3>
+                <div class="tag-cloud">
+                    <span class="tag">Azure OpenAI Service</span>
+                    <span class="tag">Azure Cognitive Services</span>
+                    <span class="tag">Generative AI</span>
+                    <span class="tag">MLOps</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Development</h3>
+                <div class="tag-cloud">
+                    <span class="tag">Microservices</span>
+                    <span class="tag">RESTful APIs</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">PostgreSQL / MongoDB</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> DevOps & Observability</h3>
+                <div class="tag-cloud">
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">Terraform / IaC</span>
+                    <span class="tag">Docker & Kubernetes</span>
+                    <span class="tag">CloudWatch / Grafana</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="experience">
-        <h2>Experience</h2>
-        <div class="exp-card">
-            <div class="role">Technical Lead</div>
-            <div>Tata Consultancy Services | Feb 2025 - Present</div>
-            <ul style="margin-top:10px; padding-left: 20px;">
-                [span_3](start_span)<li>Lead technical teams in designing and delivering enterprise-grade cloud and AI solutions[span_3](end_span).</li>
-                [span_4](start_span)<li>Architect multi-cloud solutions leveraging AWS and Azure services[span_4](end_span).</li>
-                [span_5](start_span)<li>Automate CI/CD pipelines using GitHub Actions, reducing deployment time by 40%[span_5](end_span).</li>
-            </ul>
-        </div>
+        <h2>Professional Experience</h2>
         
         <div class="exp-card">
-            <div class="role">System Engineer Developer</div>
-            <div>Tata Consultancy Services | May 2021 - Feb 2025</div>
-            <ul style="margin-top:10px; padding-left: 20px;">
-                [span_6](start_span)<li>Developed and deployed scalable microservices architectures[span_6](end_span).</li>
-                [span_7](start_span)<li>Implemented Infrastructure as Code practices for automated provisioning[span_7](end_span).</li>
+            <div class="exp-header">
+                <div>
+                    <div class="role">Technical Lead</div>
+                    <div class="company">Tata Consultancy Services</div>
+                </div>
+                <div class="date-loc">Feb 2025 - Present<br>Gurugram, India</div>
+            </div>
+            <ul class="exp-list">
+                <li>Lead technical teams in designing and delivering enterprise-grade cloud and AI solutions for high-profile clients.</li>
+                <li>Architect multi-cloud solutions leveraging AWS and Azure services to serve millions of users with high availability.</li>
+                <li>Implement AI-powered applications using Azure OpenAI Service and Cognitive Services for intelligent automation.</li>
+                <li>Drive DevOps best practices and automate CI/CD pipelines using GitHub Actions, reducing deployment time by 40%.</li>
+            </ul>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-header">
+                <div>
+                    <div class="role">System Engineer Developer</div>
+                    <div class="company">Tata Consultancy Services</div>
+                </div>
+                <div class="date-loc">May 2021 - Feb 2025<br>Gurugram, India</div>
+            </div>
+            <ul class="exp-list">
+                <li>Developed and deployed scalable microservices architectures with seamless RESTful API integrations.</li>
+                <li>Built cloud-native applications on AWS and Azure with focus on performance, security, and cost optimization.</li>
+                <li>Implemented Infrastructure as Code (IaC) practices for automated provisioning and configuration management.</li>
+            </ul>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-header">
+                <div>
+                    <div class="role">PHP Developer</div>
+                    <div class="company">SIB Infotech</div>
+                </div>
+                <div class="date-loc">Jan 2021 - Apr 2021<br>Delhi, India</div>
+            </div>
+            <ul class="exp-list">
+                <li>Developed web-based applications with emphasis on performance optimization and scalability.</li>
+                <li>Designed responsive websites and implemented enhancements for existing applications.</li>
             </ul>
         </div>
     </section>
 
     <section id="certifications">
-        <h2>Certifications</h2>
+        <h2>Professional Certifications</h2>
         <div class="cert-grid">
-            [span_8](start_span)<div class="cert-card"><b>AWS Solutions Architect Associate</b> (SAA-C03)[span_8](end_span)</div>
-            [span_9](start_span)<div class="cert-card"><b>Azure AI Engineer Associate</b> (AI-102)[span_9](end_span)</div>
-            [span_10](start_span)<div class="cert-card"><b>AWS Certified AI Practitioner</b> (AIF-C01)[span_10](end_span)</div>
-            [span_11](start_span)<div class="cert-card"><b>Azure Fundamentals</b> (AZ-900)[span_11](end_span)</div>
+            <div class="cert-card">
+                <i class="fab fa-microsoft" style="color: var(--azure); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">Azure AI Engineer Associate</h4>
+                <div class="cert-badge">CODE: AI-102</div>
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/kumar-vibhanshu/DB29156F846C6D62" target="_blank" class="verify-btn">Verify Credential</a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-aws" style="color: var(--aws); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">AWS Solutions Architect Associate</h4>
+                <div class="cert-badge">CODE: SAA-C03</div>
+                <a href="https://www.credly.com/badges/65300044-064c-4e3c-812e-85b94b438522/" target="_blank" class="verify-btn">Verify Credential</a>
+            </div>
+
+            <div class="cert-card">
+                <i class="fab fa-aws" style="color: var(--aws); font-size: 1.8rem;"></i>
+                <h4 style="margin: 12px 0;">AWS Certified AI Practitioner</h4>
+                <div class="cert-badge">CODE: AIF-C01</div>
+                <a href="https://www.credly.com/badges/65300044-064c-4e3c-812e-85b94b438522/" target="_blank" class="verify-btn">Verify Credential</a>
+            </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 4rem 0; opacity: 0.6;">
-        <p>© 2026 Kumar Vibhanshu. All Rights Reserved.</p>
+    <footer>
+        <div class="copyright">
+            <p><strong>© 2026 Kumar Vibhanshu. All Rights Reserved.</strong></p>
+        </div>
     </footer>
 </div>
 
